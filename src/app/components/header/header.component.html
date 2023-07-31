@@ -1,0 +1,32 @@
+<form [formGroup]="formGroup">
+    <div class="input-group">
+        <select
+        class="form-select"
+        id="categorySelect"
+        name="categorieQuestion"
+        formControlName="categorieQuestion">
+            <option selected value="">Select a category</option>
+            <option *ngFor="let category of categories" [value]="category.id">
+                {{category.name}}
+            </option>
+        </select>
+        <select
+        class="form-select"
+        id="difficultySelect"
+        name="difficulty"
+        formControlName="difficulty">
+            <option selected value="">Select difficulty</option>
+            <option *ngFor="let difficulty of difficultyLevel"
+                [value]="difficulty">
+                {{difficulty | titlecase}}
+            </option>
+        </select>
+        <button
+            (click)="search()" 
+            class="btn btn-outline-secondary"
+            id="createBtn"
+            type="button" >
+            Create
+        </button>
+    </div>
+</form>

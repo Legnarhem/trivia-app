@@ -1,0 +1,13 @@
+<div class="mt-2">
+    <label [innerHTML]="question.question"></label>
+</div>
+<div>
+    <ng-container *ngFor="let answer of orderedAnswers">
+        <button 
+        class="btn ms-1 me-1"
+        [ngClass]="showClass(answer)"
+        (click)="selected(answer)">
+        <label [innerHTML]="answer"></label>
+        </button>
+    </ng-container>
+</div>
