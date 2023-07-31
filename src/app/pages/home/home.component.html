@@ -1,11 +1,13 @@
 <h2>QUIZ MAKER</h2>
 <trivia-header [categories]="categories" (searchParams)="search($event)"/>
-<ng-container *ngIf="questions.length > 0">
-    <trivia-question *ngFor="let question of questions; let i = index" 
-    [question]="question"
-    (response)="responseUser($event, i)"/>
-</ng-container>
-<div class="mt-3">
+<div class="ms-5">
+    <ng-container *ngIf="questions.length > 0">
+        <trivia-question *ngFor="let question of questions; let i = index" 
+        [question]="question"
+        (response)="responseUser($event, i)"/>
+    </ng-container>
+</div>
+<div class="mt-3 d-grid gap-2 col-6 mx-auto">
     <button *ngIf="responses.length === 5" class="btn btn-secondary"
         (click)="showResult()">
         Submit
