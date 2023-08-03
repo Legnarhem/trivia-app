@@ -39,8 +39,8 @@ export class TriviaService {
    */
   getCategories(): Observable<Categorie[]> {
     const url = `${this.apiURL}/api_category.php`
-    return this.http.get<Categorie[]>(url).pipe(
-      map(data => (data as unknown as TriviaCategory).trivia_categories)
+    return this.http.get<TriviaCategory>(url).pipe(
+      map(data => data.trivia_categories)
     );
   }
 
@@ -58,8 +58,8 @@ export class TriviaService {
       .set('difficulty', difficulty)
       .set('type', 'multiple');
     
-    return this.http.get<Question[]>(url, {params}).pipe(
-      map(data => (data as unknown as Quiz).results)
+    return this.http.get<Quiz>(url, {params}).pipe(
+      map(data => data.results)
     );
   }
 

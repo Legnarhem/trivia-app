@@ -1,7 +1,9 @@
 <h2>RESULT</h2>
-<trivia-question *ngFor="let question of questions" 
+<div class="ms-5">
+    <trivia-question *ngFor="let question of questions" 
     [question]="question"
     [showResult]="true"/>
+<div>
 <div>
     <app-result-counter [correctResponses]="totalCorrectAnswer"/>
 </div>

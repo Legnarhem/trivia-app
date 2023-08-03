@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    //Control URL this.activatedRoute.snapshot.url
     this.activatedRoute.data.subscribe((response: Data) => {
       this.categories = response['categories'];
     });
@@ -36,7 +37,10 @@ export class HomeComponent implements OnInit {
   }): void {
     const { categorieQuestion, difficulty } = params;
     this.triviaService.getQuiz(categorieQuestion, difficulty).subscribe({
-      next: (response) => (this.questions = response),
+      next: (response) => {
+        this.questions = response;
+        this.responses = [];
+      },
       error: (e) => console.error('HTTP error', e),
     });
   }
@@ -58,6 +62,6 @@ export class HomeComponent implements OnInit {
    */
   public showResult(): void {
     this.triviaService.questions = this.questions;
-    this.route.navigate(['/result']);
+    this.route.navigateByUrl('/result', {state: { responses: this.responses.length }});
   }
 }

@@ -51,6 +51,8 @@ export class QuestionComponent implements OnInit{
         classes = 'btn-danger';
       } else if(this.question.correct_answer === answer) {
         classes = 'btn-success';
+      } else {
+        classes= 'btn-outline-secondary';
       }
     } else {
       classes = (answer === this.responseUser) ? 'btn-secondary' : 'btn-outline-secondary';
