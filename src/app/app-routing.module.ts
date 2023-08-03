@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CategoryResolverService } from '@services';
-import { HomeComponent, ResultComponent } from '@pages';
+import { HomeComponent } from '@pages';
 import { ResultGuard } from './services/result.guard';
 
 const routes: Routes = [
@@ -13,7 +13,7 @@ const routes: Routes = [
   {
     path: 'result',
     canActivate: [ResultGuard],
-    component: ResultComponent,
+    component: HomeComponent,
   },
   {
     path: '**',

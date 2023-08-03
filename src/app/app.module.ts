@@ -9,7 +9,6 @@ import { HeaderComponent, QuestionComponent } from '@components';
 import { HomeComponent } from '@pages';
 import { TriviaService } from '@services';
 import { RamdomSortPipe } from '@pipes';
-import { ResultComponent } from './pages/result/result.component';
 import { ShowResultDirective } from './directives/show-result.directive';
 import { ResultCounterComponent } from './components/result-counter/result-counter.component';
 
@@ -20,7 +19,6 @@ import { ResultCounterComponent } from './components/result-counter/result-count
     QuestionComponent,
     HomeComponent,
     RamdomSortPipe,
-    ResultComponent,
     ShowResultDirective,
     ResultCounterComponent
   ],

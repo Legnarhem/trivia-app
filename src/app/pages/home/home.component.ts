@@ -13,6 +13,8 @@ export class HomeComponent implements OnInit {
   questions: Question[] = [];
   responses: number[] = [];
   aux: string[] = [];
+  totalCorrectAnswer: number = 0;
+  resultMode: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -21,10 +23,22 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    //Control URL this.activatedRoute.snapshot.url
-    this.activatedRoute.data.subscribe((response: Data) => {
-      this.categories = response['categories'];
-    });
+    this.resultMode = this.route.url === '/result';
+    if(!this.resultMode) {
+      this.activatedRoute.data.subscribe((response: Data) => {
+        this.categories = response['categories'];
+      });
+    } else {
+      this.questions = this.triviaService.questions;
+      if(this.questions.length === 5) {
+        this.questions.forEach(question => {
+          if(question.correct_answer === question.response) this.totalCorrectAnswer +=1;
+        });
+      } else {
+        this.route.navigate(['']);
+      }
+    }
+    
   }
 
   /**
